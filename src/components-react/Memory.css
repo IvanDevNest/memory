@@ -1,7 +1,17 @@
-.container{
-    display: flex;
+.titulo{
+    width: 100%;
+    text-align: center;
     justify-content: center;
-    
+    align-items: center;
+    align-content: center;
+
+}
+.container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
 }
 body {
     font-family: Arial, sans-serif;
@@ -16,6 +26,7 @@ body {
 
 header {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .titulo-juego {
