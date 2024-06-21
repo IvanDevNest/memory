@@ -8,7 +8,7 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-let colores = ["001", "001", "002", "002", "003", "003", "004", "004", "005", "005", "006", "006", "007", "007", "008", "008", "009", "009", "010", "010",];
+let colores = ["011", "011", "002", "002", "003", "003", "004", "004", "005", "005", "006", "006", "007", "007", "008", "008", "009", "009", "010", "010",];
 shuffleArray(colores)
 colores = colores.map(e => ({ color: e, visible: 0 }))
 console.log("colores", colores);
