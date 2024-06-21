@@ -8,12 +8,13 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-let colores = ["011", "011", "002", "002", "003", "003", "004", "004", "005", "005", "006", "006", "007", "007", "008", "008", "009", "009", "010", "010",];
+
 shuffleArray(colores)
 colores = colores.map(e => ({ color: e, visible: 0 }))
 console.log("colores", colores);
 
 function Memory() {
+    let [aciertos, setAciertos] = useState(0)
 
     let [cartaAnterior, setCartaAnterior] = useState(null)
     let [mapa, setMapa] = useState(colores)
@@ -23,12 +24,21 @@ function Memory() {
         if (mapa.every(carta => carta.visible == 2)) {
             guanyat = true
             return guanyat
+            
         }
         else {
             return guanyat
         }
     };
     function click(i) {
+        if(clickar<2){
+            clickar++
+        }
+        if(clickar ==2){
+            intentos++
+            clickar = 0
+        }
+
         if (mapa[i].visible === 2) {
             return;
         }
@@ -46,6 +56,8 @@ function Memory() {
             if (cartaAnterior.color === mapaActual[i].color) {
                 mapaActual[cartaAnterior.id].visible = 2;
                 mapaActual[i].visible = 2;
+                setAciertos(aciertos+1)
+
                 setMapa(mapaActual);
                 setCartaAnterior(null);
             } else {
@@ -79,7 +91,9 @@ function Memory() {
             </head>
             <header>
                 <div className='titulo'>
-                    <h1 class="titulo-juego">MEMORY</h1>
+                <h1 class="titulo-juego">MEMORY</h1>
+                <h1 class="titulo-juego">Aciertos : {aciertos}</h1>
+                <h1 class="titulo-juego">Porcentaje de aciertos : {(aciertos?Math.trunc((aciertos/intentos)*100): 0)} %</h1>
 
                 </div>
             </header>
